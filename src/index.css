@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-blue: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-navbar: #0F2B5B;
+  --color-accent: #3B82F6;
+  --color-badge: #DBEAFE;
+  
+  --color-heading: #0F172A;
+  --color-body: #475569;
+  --color-secondary: #64748B;
+  --color-muted: #94A3B8;
+  
+  --color-main: #F8FAFC;
+  --color-card: #FFFFFF;
+  --color-section: #F1F5F9;
+
+  --radius-2xl: 1rem;
+  --blur-xs: 2px;
+  
+  --background-image-gradient-blue: linear-gradient(90deg, #2563EB, #1D4ED8);
+}
+
+/* Custom Base Styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: transparent;
+    color: var(--color-body);
+    @apply antialiased overflow-x-hidden;
+  }
+}
+
+/* Custom Utility/Component Classes */
+/* In v4, definining these outside @layer blocks can help with @apply resolution issues */
+
+.glass {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  /* Combine glass effects with transitions */
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  @apply rounded-2xl shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:border-white/40;
+}
+
+.btn-gradient {
+  background-image: var(--background-image-gradient-blue);
+  @apply text-white font-medium py-3 px-8 rounded-full transition-transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-primary-blue/30;
+}
+
+.section-padding {
+  @apply py-24 px-6 md:px-12 lg:px-24;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(37, 99, 235, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(37, 99, 235, 0.4);
+}
+
+/* Video Background styles */
+.video-bg-container {
+  @apply fixed inset-0 w-full h-full -z-10 overflow-hidden;
+}
+
+.video-bg {
+  @apply absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover transition-opacity duration-1000;
+}
+
+.video-overlay {
+  @apply absolute inset-0 bg-black/30 backdrop-blur-[2px] transition-colors duration-1000;
+}
+
+.dark .video-overlay {
+  @apply bg-black/90 backdrop-blur-none;
+}
+
+.dark .video-bg {
+  @apply opacity-0;
+}
