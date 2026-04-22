@@ -52,7 +52,7 @@ const Navbar = () => {
           animate={{ opacity: 1, x: 0 }}
           className="text-2xl font-bold text-white tracking-tighter"
         >
-          CAREER<span className="text-primary-blue">PORTAL</span>
+           Carrier @ <span className="text-primary-blue">CRCCF</span>
         </motion.div>
 
         {/* Desktop Links */}
